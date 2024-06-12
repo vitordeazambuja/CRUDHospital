@@ -26,6 +26,21 @@ public class Paciente {
         this.numeroIdentificacao = numeroIdentificacao;
     }
 
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", dataNascimento='" + dataNascimento + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", numeroIdentificacao=" + numeroIdentificacao +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
