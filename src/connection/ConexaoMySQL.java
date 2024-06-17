@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConexaoMySQL {
     private static String status = "Não conectou...";
-    private static final String URL = "jdbc:mysql://localhost/CRUDHospital";
+    private static final String URL = "jdbc:mysql://localhost/crudhospital";
     private static final String USER = "root";
     private static final String PASSWORD = "admin";
 

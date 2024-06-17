@@ -11,7 +11,7 @@ public class ControlaPaciente {
 
     public boolean adicionarPaciente(Paciente paciente) {
         Connection connection = ConexaoMySQL.getInstance();
-        String sql = "INSERT INTO pacientes (nome, cpf, dataNascimento, sexo, email, telefone, endereco, numeroIdentificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pacientes (nome, cpf, data_nascimento, sexo, email, telefone, endereco, numero_identificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -48,12 +48,12 @@ public class ControlaPaciente {
                 paciente.setId(rs.getInt("id"));
                 paciente.setNome(rs.getString("nome"));
                 paciente.setCpf(rs.getString("cpf"));
-                paciente.setDataNascimento(rs.getString("dataNascimento"));
+                paciente.setDataNascimento(rs.getString("data_nascimento"));
                 paciente.setSexo(rs.getString("sexo"));
                 paciente.setEmail(rs.getString("email"));
                 paciente.setTelefone(rs.getString("telefone"));
                 paciente.setEndereco(rs.getString("endereco"));
-                paciente.setNumeroIdentificacao(rs.getInt("numeroIdentificacao"));
+                paciente.setNumeroIdentificacao(rs.getInt("numero_identificacao"));
 
                 pacientes.add(paciente);
             }
@@ -67,7 +67,7 @@ public class ControlaPaciente {
 
     public boolean editarPaciente(Paciente paciente) {
         Connection connection = ConexaoMySQL.getInstance();
-        String sql = "UPDATE pacientes SET nome = ?, cpf = ?, dataNascimento = ?, sexo = ?, email = ?, telefone = ?, endereco = ?, numeroIdentificacao = ? WHERE id = ?";
+        String sql = "UPDATE pacientes SET nome = ?, cpf = ?, data_nascimento = ?, sexo = ?, email = ?, telefone = ?, endereco = ?, numero_identificacao = ? WHERE id = ?";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
