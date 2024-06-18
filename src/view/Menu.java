@@ -6,6 +6,9 @@ import model.Paciente;
 import controller.ControlaMedico;
 import model.Medico;
 
+import controller.ControlaConsulta;
+import model.Consulta;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,11 +17,13 @@ public class Menu {
     private Scanner scanner;
     private ControlaPaciente controlaPaciente;
     private ControlaMedico controlaMedico;
+    private ControlaConsulta controlaConsulta;
 
     public Menu(){
         this.scanner = new Scanner(System.in);
         this.controlaPaciente = new ControlaPaciente();
         this.controlaMedico = new ControlaMedico();
+        this.controlaConsulta = new ControlaConsulta();
     }
 
     public void exibirMenu(){
@@ -322,7 +327,7 @@ public class Menu {
         }
     }
 
-    public void gerenciarConsultas(){
+    public void gerenciarConsultas() {
         boolean voltar = false;
 
         while (!voltar) {
@@ -338,20 +343,16 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    // Código para adicionar consulta
-                    System.out.println("Adicionando consulta...");
+                    adicionarConsulta();
                     break;
                 case 2:
-                    // Código para listar consultas
-                    System.out.println("Listando consultas...");
+                    listarConsultas();
                     break;
                 case 3:
-                    // Código para editar consulta
-                    System.out.println("Editando consulta...");
+                    editarConsulta();
                     break;
                 case 4:
-                    // Código para remover consulta
-                    System.out.println("Removendo consulta...");
+                    removerConsulta();
                     break;
                 case 0:
                     voltar = true;
@@ -359,6 +360,104 @@ public class Menu {
                 default:
                     System.out.println("Opcao invalida! Tente novamente.");
             }
+        }
+    }
+
+    private void adicionarConsulta() {
+        scanner.nextLine();
+
+        System.out.print("ID do Paciente: ");
+        int pacienteId = scanner.nextInt();
+        System.out.print("ID do Medico: ");
+        int medicoId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Data (AAAA-MM-DD): ");
+        String data = scanner.nextLine();
+        System.out.print("Hora (HH:MM): ");
+        String hora = scanner.nextLine();
+
+        Paciente paciente = new Paciente();
+        paciente.setId(pacienteId);
+
+        Medico medico = new Medico();
+        medico.setId(medicoId);
+
+        Consulta consulta = new Consulta();
+        consulta.setPaciente(paciente);
+        consulta.setMedico(medico);
+        consulta.setData(data);
+        consulta.setHora(hora);
+
+        boolean sucesso = controlaConsulta.adicionarConsulta(consulta);
+        if (sucesso) {
+            System.out.println("Consulta adicionada com sucesso!");
+        } else {
+            System.out.println("Erro ao adicionar consulta.");
+        }
+    }
+
+    private void listarConsultas() {
+        List<Consulta> consultas = controlaConsulta.listarConsultas();
+
+        if (consultas.isEmpty()) {
+            System.out.println("Nenhuma consulta encontrada.");
+        } else {
+            for (Consulta consulta : consultas) {
+                System.out.println("Consulta ID: " + consulta.getId());
+                System.out.println("Paciente: " + consulta.getPaciente().getNome());
+                System.out.println("Medico: " + consulta.getMedico().getNome());
+                System.out.println("Data: " + consulta.getData());
+                System.out.println("Hora: " + consulta.getHora());
+                System.out.println();
+            }
+        }
+    }
+
+    private void editarConsulta() {
+        System.out.print("ID da consulta a ser editada: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("ID do Paciente: ");
+        int pacienteId = scanner.nextInt();
+        System.out.print("ID do Medico: ");
+        int medicoId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Nova data (AAAA-MM-DD): ");
+        String data = scanner.nextLine();
+        System.out.print("Nova hora (HH:MM): ");
+        String hora = scanner.nextLine();
+
+        Paciente paciente = new Paciente();
+        paciente.setId(pacienteId);
+
+        Medico medico = new Medico();
+        medico.setId(medicoId);
+
+        Consulta consulta = new Consulta();
+        consulta.setId(id);
+        consulta.setPaciente(paciente);
+        consulta.setMedico(medico);
+        consulta.setData(data);
+        consulta.setHora(hora);
+
+        boolean sucesso = controlaConsulta.editarConsulta(consulta);
+        if (sucesso) {
+            System.out.println("Consulta editada com sucesso!");
+        } else {
+            System.out.println("Erro ao editar consulta.");
+        }
+    }
+
+    private void removerConsulta() {
+        System.out.print("ID da consulta a ser removida: ");
+        int id = scanner.nextInt();
+
+        boolean sucesso = controlaConsulta.removerConsulta(id);
+        if (sucesso) {
+            System.out.println("Consulta removida com sucesso!");
+        } else {
+            System.out.println("Erro ao remover consulta.");
         }
     }
 }
