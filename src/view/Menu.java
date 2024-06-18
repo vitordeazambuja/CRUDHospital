@@ -18,6 +18,7 @@ public class Menu {
     public Menu(){
         this.scanner = new Scanner(System.in);
         this.controlaPaciente = new ControlaPaciente();
+        this.controlaMedico = new ControlaMedico();
     }
 
     public void exibirMenu(){
@@ -229,25 +230,25 @@ public class Menu {
     private void adicionarMedico() {
         scanner.nextLine();
 
-        System.out.println("Nome: ");
+        System.out.print("Nome: ");
         String nome = scanner.nextLine();
 
-        System.out.println("CPF: ");
+        System.out.print("CPF: ");
         String cpf = scanner.nextLine();
 
-        System.out.println("Email: ");
+        System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        System.out.println("Telefone: ");
+        System.out.print("Telefone: ");
         String telefone = scanner.nextLine();
 
-        System.out.println("Endereco: ");
+        System.out.print("Endereco: ");
         String endereco = scanner.nextLine();
 
-        System.out.println("Especialidade: ");
+        System.out.print("Especialidade: ");
         String especialidade = scanner.nextLine();
 
-        System.out.println("Numero de Identificacao: ");
+        System.out.print("Numero de Identificacao: ");
         int numeroIdentificacao = scanner.nextInt();
 
         Medico medico = new Medico(0,nome,cpf,email,telefone,endereco,especialidade,numeroIdentificacao);
@@ -277,25 +278,25 @@ public class Menu {
         int id = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Novo nome: ");
+        System.out.print("Novo nome: ");
         String nome = scanner.nextLine();
 
-        System.out.println("Novo CPF: ");
+        System.out.print("Novo CPF: ");
         String cpf = scanner.nextLine();
 
-        System.out.println("Novo email: ");
+        System.out.print("Novo email: ");
         String email = scanner.nextLine();
 
-        System.out.println("Novo telefone: ");
+        System.out.print("Novo telefone: ");
         String telefone = scanner.nextLine();
 
-        System.out.println("Novo endereco: ");
+        System.out.print("Novo endereco: ");
         String endereco = scanner.nextLine();
 
-        System.out.println("Nova especialidade: ");
+        System.out.print("Nova especialidade: ");
         String especialidade = scanner.nextLine();
 
-        System.out.println("novo numero de identificacao: ");
+        System.out.print("novo numero de identificacao: ");
         int numeroIdentificacao = scanner.nextInt();
 
         Medico medico = new Medico(id, nome, cpf, email, telefone, endereco, especialidade, numeroIdentificacao);

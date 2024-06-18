@@ -12,7 +12,7 @@ public class ControlaMedico {
 
     public boolean adicionarMedico(Medico medico){
         Connection connection = ConexaoMySQL.getInstance();
-        String sql = "INSERT INTO medicos (nome, cpf, email, telefone, endereco, especialidade, numero_identificacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO medicos (nome, cpf, email, telefone, endereco, especialidade, numero_identificacao) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try{
             PreparedStatement pstmt = connection.prepareStatement(sql);

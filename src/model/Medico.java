@@ -23,6 +23,20 @@ public class Medico {
         this.numeroIdentificacao = numeroIdentificacao;
     }
 
+    @Override
+    public String toString() {
+        return "Medico{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", especialidade='" + especialidade + '\'' +
+                ", numeroIdentificacao=" + numeroIdentificacao +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
