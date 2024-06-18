@@ -140,7 +140,16 @@ public class Menu {
             System.out.println("Nenhum paciente encontrado.");
         } else {
             for (Paciente paciente : pacientes) {
-                System.out.println(paciente);
+                System.out.println("Medico ID: " + paciente.getId());
+                System.out.println("Nome: " + paciente.getNome());
+                System.out.println("CPF: " + paciente.getCpf());
+                System.out.println("Data de Nascimento: " + paciente.getDataNascimento());
+                System.out.println("Sexo: " + paciente.getSexo());
+                System.out.println("Email: " + paciente.getEmail());
+                System.out.println("Telefone: " + paciente.getTelefone());
+                System.out.println("Endereco: " + paciente.getEndereco());
+                System.out.println("Numero de Identificacao: " + paciente.getNumeroIdentificacao());
+                System.out.println();
             }
         }
     }
@@ -272,8 +281,16 @@ public class Menu {
         if (medicos.isEmpty()) {
             System.out.println("Nenhum medico encontrado.");
         }else{
-            for (Medico medico : medicos){
-                System.out.println(medico);
+            for (Medico medico : medicos) {
+                System.out.println("Medico ID: " + medico.getId());
+                System.out.println("Nome: " + medico.getNome());
+                System.out.println("CPF: " + medico.getCpf());
+                System.out.println("Email: " + medico.getEmail());
+                System.out.println("Telefone: " + medico.getTelefone());
+                System.out.println("Endereco: " + medico.getEndereco());
+                System.out.println("Especialidade: " + medico.getEspecialidade());
+                System.out.println("Numero de Identificacao: " + medico.getNumeroIdentificacao());
+                System.out.println();
             }
         }
     }
