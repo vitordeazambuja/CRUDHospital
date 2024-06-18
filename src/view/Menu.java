@@ -3,6 +3,9 @@ package view;
 import controller.ControlaPaciente;
 import model.Paciente;
 
+import controller.ControlaMedico;
+import model.Medico;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +13,7 @@ public class Menu {
 
     private Scanner scanner;
     private ControlaPaciente controlaPaciente;
+    private ControlaMedico controlaMedico;
 
     public Menu(){
         this.scanner = new Scanner(System.in);
@@ -87,7 +91,7 @@ public class Menu {
     }
 
     private void adicionarPaciente() {
-        scanner.nextLine(); // Consumir o newline deixado pelo nextInt()
+        scanner.nextLine();
 
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -138,7 +142,7 @@ public class Menu {
     private void editarPaciente() {
         System.out.print("ID do paciente a ser editado: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Consumir o newline deixado pelo nextInt()
+        scanner.nextLine();
 
         System.out.print("Novo nome: ");
         String nome = scanner.nextLine();
@@ -202,20 +206,16 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    // Código para adicionar médico
-                    System.out.println("Adicionando medico...");
+                    adicionarMedico();
                     break;
                 case 2:
-                    // Código para listar médicos
-                    System.out.println("Listando medicos...");
+                    listarMedicos();
                     break;
                 case 3:
-                    // Código para editar médico
-                    System.out.println("Editando medico...");
+                    editarMedico();
                     break;
                 case 4:
-                    // Código para remover médico
-                    System.out.println("Removendo medico...");
+                    removerMedico();
                     break;
                 case 0:
                     voltar = true;
@@ -223,6 +223,101 @@ public class Menu {
                 default:
                     System.out.println("Opcao invalida! Tente novamente.");
             }
+        }
+    }
+
+    private void adicionarMedico() {
+        scanner.nextLine();
+
+        System.out.println("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
+
+        System.out.println("Email: ");
+        String email = scanner.nextLine();
+
+        System.out.println("Telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.println("Endereco: ");
+        String endereco = scanner.nextLine();
+
+        System.out.println("Especialidade: ");
+        String especialidade = scanner.nextLine();
+
+        System.out.println("Numero de Identificacao: ");
+        int numeroIdentificacao = scanner.nextInt();
+
+        Medico medico = new Medico(0,nome,cpf,email,telefone,endereco,especialidade,numeroIdentificacao);
+
+        boolean sucesso = controlaMedico.adicionarMedico(medico);
+        if (sucesso){
+            System.out.println("Medico adicionado com sucesso!");
+        } else{
+            System.out.println("Erro ao adicionar medico.");
+        }
+    }
+
+    private void listarMedicos() {
+        List<Medico> medicos = controlaMedico.listarMedicos();
+
+        if (medicos.isEmpty()) {
+            System.out.println("Nenhum medico encontrado.");
+        }else{
+            for (Medico medico : medicos){
+                System.out.println(medico);
+            }
+        }
+    }
+
+    private void editarMedico() {
+        System.out.println("ID do medico a ser editado: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Novo nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("Novo CPF: ");
+        String cpf = scanner.nextLine();
+
+        System.out.println("Novo email: ");
+        String email = scanner.nextLine();
+
+        System.out.println("Novo telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.println("Novo endereco: ");
+        String endereco = scanner.nextLine();
+
+        System.out.println("Nova especialidade: ");
+        String especialidade = scanner.nextLine();
+
+        System.out.println("novo numero de identificacao: ");
+        int numeroIdentificacao = scanner.nextInt();
+
+        Medico medico = new Medico(id, nome, cpf, email, telefone, endereco, especialidade, numeroIdentificacao);
+
+        boolean sucesso = controlaMedico.editarMedico(medico);
+
+        if (sucesso){
+            System.out.println("Medico editado com sucesso!");
+        } else{
+            System.out.println("Erro ao editar medico.");
+        }
+    }
+
+    private void removerMedico() {
+        System.out.print("ID do medico a ser removido: ");
+        int id = scanner.nextInt();
+
+        boolean sucesso = controlaMedico.removerMedico(id);
+        if (sucesso){
+            System.out.println("Medico removido com sucesso!");
+        } else{
+            System.out.println("Erro ao remover medico.");
         }
     }
 
