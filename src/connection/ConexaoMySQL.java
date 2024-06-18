@@ -8,7 +8,7 @@ public class ConexaoMySQL {
     private static String status = "Não conectou...";
     private static final String URL = "jdbc:mysql://localhost/crudhospital";
     private static final String USER = "root";
-    private static final String PASSWORD = "admin";
+    private static final String PASSWORD = "admin123";
 
     // Método Construtor da Classe
     public ConexaoMySQL() {
