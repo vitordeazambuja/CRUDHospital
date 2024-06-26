@@ -140,7 +140,7 @@ public class Menu {
             System.out.println("Nenhum paciente encontrado.");
         } else {
             for (Paciente paciente : pacientes) {
-                System.out.println("Medico ID: " + paciente.getId());
+                System.out.println("Paciente ID: " + paciente.getId());
                 System.out.println("Nome: " + paciente.getNome());
                 System.out.println("CPF: " + paciente.getCpf());
                 System.out.println("Data de Nascimento: " + paciente.getDataNascimento());
